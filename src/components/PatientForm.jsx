@@ -31,7 +31,7 @@ export default function PatientForm({ initial = {}, onSubmit, loading, rooms = [
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validate()) return;
-    const validMeds = meds.filter(m => m.name.trim()).map(m => ({ ...m, issued: m.issued || false }));
+    const validMeds = meds.filter(m => m.name.trim()).map(m => ({ ...m, issued: m.issued || false, count: parseInt(m.count) || 1 }));
     onSubmit({ ...form, age: parseInt(form.age) || 0, medications: validMeds });
   };
 
@@ -146,8 +146,8 @@ export default function PatientForm({ initial = {}, onSubmit, loading, rooms = [
                 <input className="form-input" type="number" min="1" max="10"
                   title="Кол-во раз в день"
                   placeholder="1"
-                  value={med.count || 1}
-                  onChange={e => setMedF(med.id, 'count', Math.max(1, parseInt(e.target.value) || 1))} />
+                  value={med.count ?? ''}
+                  onChange={e => setMedF(med.id, 'count', e.target.value)} />
               </div>
               {meds.length > 1 && (
                 <button type="button" onClick={() => removeMed(med.id)}
