@@ -136,7 +136,7 @@ export default function PatientForm({ initial = {}, onSubmit, loading, rooms = [
               background: 'var(--surface-2)', border: '1.5px solid var(--border)',
               borderRadius: 'var(--radius-sm)', padding: '10px',
             }}>
-              <div style={{ flex: 1, display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: 8 }}>
+              <div className="med-row-grid" style={{ flex: 1, display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: 8 }}>
                 <input className="form-input" placeholder="Название препарата"
                   value={med.name} onChange={e => setMedF(med.id, 'name', e.target.value)} />
                 <input className="form-input" placeholder="Дозировка"

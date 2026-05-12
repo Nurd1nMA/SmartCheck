@@ -63,7 +63,7 @@ export default function Profile() {
         </div>
       </div>
 
-      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:20, alignItems:'start' }}>
+      <div className="profile-cols" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:20, alignItems:'start' }}>
 
         {/* Profile card */}
         <div className="card">
