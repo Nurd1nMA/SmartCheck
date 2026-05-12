@@ -14,7 +14,7 @@ export default function PatientForm({ initial = {}, onSubmit, loading, rooms = [
 
   const setF = (k, v) => { setForm(f => ({ ...f, [k]: v })); setErrors(e => ({ ...e, [k]: '' })); };
 
-  const addMed    = () => setMeds(m => [...m, { id: uid(), name: '', dosage: '', time: '' }]);
+  const addMed    = () => setMeds(m => [...m, { id: uid(), name: '', dosage: '', time: '', count: 1 }]);
   const removeMed = (id) => setMeds(m => m.filter(x => x.id !== id));
   const setMedF   = (id, k, v) => setMeds(m => m.map(x => x.id === id ? { ...x, [k]: v } : x));
 
@@ -136,13 +136,18 @@ export default function PatientForm({ initial = {}, onSubmit, loading, rooms = [
               background: 'var(--surface-2)', border: '1.5px solid var(--border)',
               borderRadius: 'var(--radius-sm)', padding: '10px',
             }}>
-              <div className="med-row-grid" style={{ flex: 1, display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: 8 }}>
+              <div className="med-row-grid" style={{ flex: 1, display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 56px', gap: 8 }}>
                 <input className="form-input" placeholder="Название препарата"
                   value={med.name} onChange={e => setMedF(med.id, 'name', e.target.value)} />
                 <input className="form-input" placeholder="Дозировка"
                   value={med.dosage} onChange={e => setMedF(med.id, 'dosage', e.target.value)} />
-                <input className="form-input" placeholder="Время (08:00)"
+                <input className="form-input" placeholder="08:00"
                   value={med.time} onChange={e => setMedF(med.id, 'time', e.target.value)} />
+                <input className="form-input" type="number" min="1" max="10"
+                  title="Кол-во раз в день"
+                  placeholder="1"
+                  value={med.count || 1}
+                  onChange={e => setMedF(med.id, 'count', Math.max(1, parseInt(e.target.value) || 1))} />
               </div>
               {meds.length > 1 && (
                 <button type="button" onClick={() => removeMed(med.id)}

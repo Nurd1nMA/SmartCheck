@@ -22,18 +22,27 @@ export default function PatientDetail() {
   const [deleting, setDeleting] = useState(false);
   const [showDelModal, setShowDelModal] = useState(false);
 
+  // true если препарат выдан полностью (с учётом кол-ва раз)
+  const isMedDone = (med) => {
+    const total = med.count || 1;
+    if (total > 1) return (med.issuedCount || 0) >= total;
+    return med.issued === true;
+  };
+
   const handleIssue = async (medId) => {
     if (!localPatient) return;
-
     setIssuingId(medId);
 
-    const updatedMeds = localPatient.medications.map((m) =>
-      m.id === medId ? { ...m, issued: true } : m
-    );
+    const updatedMeds = localPatient.medications.map((m) => {
+      if (m.id !== medId) return m;
+      const total = m.count || 1;
+      if (total <= 1) return { ...m, issued: true };
+      const newIssued = (m.issuedCount || 0) + 1;
+      return { ...m, issuedCount: newIssued, issued: newIssued >= total };
+    });
 
     const updatedPatient = { ...localPatient, medications: updatedMeds };
     setLocalPatient(updatedPatient);
-
     try {
       await updatePatient(id, updatedPatient);
     } catch {
@@ -68,13 +77,9 @@ export default function PatientDetail() {
 
   const patient = localPatient;
 
-  const allIssued =
-    patient.medications?.every((m) => m.issued) || false;
-
-  const issuedCount =
-    patient.medications?.filter((m) => m.issued).length || 0;
-
-  const total = patient.medications?.length || 0;
+  const allIssued = patient.medications?.every(isMedDone) || false;
+  const doneCount = patient.medications?.filter(isMedDone).length || 0;
+  const total     = patient.medications?.length || 0;
 
   const st = STATUS_LABELS[patient.status];
 
@@ -167,7 +172,7 @@ export default function PatientDetail() {
         <div className="card-header">
           <span className="card-title">💊 Назначения</span>
           <span className={`badge ${allIssued ? 'badge-green' : 'badge-amber'}`}>
-            {issuedCount}/{total} выдано
+            {doneCount}/{total} выдано
           </span>
         </div>
 
@@ -179,34 +184,49 @@ export default function PatientDetail() {
           )}
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {patient.medications?.map((med) => (
-              <div
-                key={med.id}
-                className={`med-item${med.issued ? ' med-item--issued' : ''}`}
-              >
-                <div style={{ fontSize: 20 }}>💊</div>
+            {patient.medications?.map((med) => {
+              const medTotal   = med.count || 1;
+              const medIssued  = medTotal > 1 ? (med.issuedCount || 0) : (med.issued ? 1 : 0);
+              const done       = isMedDone(med);
+              const partial    = !done && medIssued > 0;
+              return (
+                <div
+                  key={med.id}
+                  className={`med-item${done ? ' med-item--issued' : partial ? ' med-item--partial' : ''}`}
+                >
+                  <div style={{ fontSize: 20 }}>💊</div>
 
-                <div className="med-info">
-                  <div className="med-name">{med.name}</div>
-                  <div className="med-meta">
-                    <span className="med-dosage">{med.dosage}</span>
-                    <span className="med-time">🕐 {med.time}</span>
+                  <div className="med-info">
+                    <div className="med-name">{med.name}</div>
+                    <div className="med-meta">
+                      <span className="med-dosage">{med.dosage}</span>
+                      <span className="med-time">🕐 {med.time}</span>
+                      {medTotal > 1 && (
+                        <span className="med-dosage" style={{ background: done ? '' : 'var(--amber-50)', color: done ? '' : 'var(--amber-500)' }}>
+                          {medIssued}/{medTotal} раз
+                        </span>
+                      )}
+                    </div>
                   </div>
-                </div>
 
-                {med.issued ? (
-                  <div className="issued-mark">✔</div>
-                ) : (
-                  <button
-                    className="issue-btn"
-                    onClick={() => handleIssue(med.id)}
-                    disabled={issuingId === med.id}
-                  >
-                    {issuingId === med.id ? '...' : 'Выдать'}
-                  </button>
-                )}
-              </div>
-            ))}
+                  {done ? (
+                    <div className="issued-mark">✔</div>
+                  ) : (
+                    <button
+                      className="issue-btn"
+                      onClick={() => handleIssue(med.id)}
+                      disabled={issuingId === med.id}
+                    >
+                      {issuingId === med.id
+                        ? '...'
+                        : medTotal > 1
+                          ? `Выдать (${medIssued + 1}/${medTotal})`
+                          : 'Выдать'}
+                    </button>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

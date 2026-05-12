@@ -13,7 +13,13 @@ export default function PatientCreate() {
     getRooms().then((res) => setRooms(res.data)).catch(() => {});
   }, []);
 
-  const handleSubmit = async (data) => {
+  const normalizeRoom = (name) => {
+    const t = name?.trim() || '';
+    return /^\d+$/.test(t) ? `Палата ${t}` : t;
+  };
+
+  const handleSubmit = async (rawData) => {
+    const data = { ...rawData, room: normalizeRoom(rawData.room) };
     setLoading(true);
     setError('');
     try {

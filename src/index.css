@@ -454,7 +454,8 @@ tr:hover td { background: var(--surface-2); }
   border-radius: var(--radius-md); background: var(--surface-2);
   transition: background .2s, border-color .2s;
 }
-.med-item--issued { background:var(--green-50); border-color:var(--green-100); }
+.med-item--issued  { background:var(--green-50);  border-color:var(--green-100); }
+.med-item--partial { background:var(--amber-50); border-color:var(--amber-100); }
 .med-info { flex: 1; }
 .med-name   { font-size: 14px; font-weight: 700; }
 .med-meta   { display: flex; gap: 8px; margin-top: 3px; flex-wrap: wrap; }
