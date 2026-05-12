@@ -1,0 +1,276 @@
+{
+  "patients": [
+    {
+      "id": "1",
+      "name": "Азимов Бахтиёр Рустамович",
+      "age": 54,
+      "room": "Палата 201",
+      "bloodType": "A(II) Rh+",
+      "diagnosis": "Гипертоническая болезнь II ст.",
+      "phone": "+998 90 123-45-67",
+      "allergies": "Нет",
+      "doctor": "Иванова С.В.",
+      "admittedDate": "03.04.2026",
+      "status": "active",
+      "medications": [
+        {
+          "id": "m1",
+          "name": "Амлодипин",
+          "dosage": "5 мг",
+          "time": "08:00",
+          "issued": true
+        },
+        {
+          "id": "m2",
+          "name": "Лизиноприл",
+          "dosage": "10 мг",
+          "time": "08:00",
+          "issued": true
+        },
+        {
+          "id": "m3",
+          "name": "Аспирин Кардио",
+          "dosage": "100 мг",
+          "time": "12:00",
+          "issued": true
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Джумаева Малика Хасановна",
+      "age": 38,
+      "room": "Палата 115",
+      "bloodType": "B(III) Rh−",
+      "diagnosis": "Сахарный диабет 2 типа",
+      "phone": "+998 91 234-56-78",
+      "allergies": "Пенициллин",
+      "doctor": "Садыков А.Р.",
+      "admittedDate": "05.04.2026",
+      "status": "active",
+      "medications": [
+        {
+          "id": "m4",
+          "name": "Метформин",
+          "dosage": "500 мг",
+          "time": "07:30",
+          "issued": true
+        },
+        {
+          "id": "m5",
+          "name": "Гликлазид",
+          "dosage": "30 мг",
+          "time": "07:30",
+          "issued": true
+        },
+        {
+          "id": "m6",
+          "name": "Омепразол",
+          "dosage": "20 мг",
+          "time": "20:00",
+          "issued": true
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Умарова Зарина Шавкатовна",
+      "age": 29,
+      "room": "Палата 210",
+      "bloodType": "AB(IV) Rh+",
+      "diagnosis": "Внебольничная пневмония",
+      "phone": "+998 94 456-78-90",
+      "allergies": "Нет",
+      "doctor": "Садыков А.Р.",
+      "admittedDate": "06.04.2026",
+      "status": "active",
+      "medications": [
+        {
+          "id": "m10",
+          "name": "Амоксициллин",
+          "dosage": "500 мг",
+          "time": "08:00",
+          "issued": true
+        },
+        {
+          "id": "m11",
+          "name": "Амброксол",
+          "dosage": "30 мг",
+          "time": "08:00",
+          "issued": true
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Рахимов Санжар Ильёсович",
+      "age": 45,
+      "room": "Палата 104",
+      "bloodType": "A(II) Rh−",
+      "diagnosis": "Язвенная болезнь желудка",
+      "phone": "+998 95 567-89-01",
+      "allergies": "Нет",
+      "doctor": "Петрова М.И.",
+      "admittedDate": "07.04.2026",
+      "status": "discharged",
+      "medications": [
+        {
+          "id": "m12",
+          "name": "Омепразол",
+          "dosage": "40 мг",
+          "time": "07:00",
+          "issued": true
+        },
+        {
+          "id": "m13",
+          "name": "Де-Нол",
+          "dosage": "120 мг",
+          "time": "07:00",
+          "issued": true
+        }
+      ]
+    },
+    {
+      "name": "Рыскулбеков Нурдин Марлесович ",
+      "age": 18,
+      "room": "Палата 201",
+      "bloodType": "A(II) Rh−",
+      "diagnosis": "Ультраленивость ",
+      "phone": "+996 771 86 47 20",
+      "allergies": "Чушь",
+      "doctor": "Иванов С.В",
+      "admittedDate": "10.05.2026",
+      "status": "active",
+      "medications": [
+        {
+          "id": "mp02d0fpgoibcl1cber",
+          "name": "Тринитротолуол",
+          "dosage": "20мг",
+          "time": "20:00",
+          "issued": true
+        }
+      ],
+      "id": "1778435315766"
+    },
+    {
+      "name": "Нурмагомедов Хабиб Абдулманапивичь",
+      "age": 45,
+      "room": "114",
+      "bloodType": "A(II) Rh−",
+      "diagnosis": "Партер зависимость",
+      "phone": "+996 7777777767",
+      "allergies": "Коннор",
+      "doctor": "Рыскулбеков Н.Р",
+      "admittedDate": "11.05.2026",
+      "status": "active",
+      "medications": [
+        {
+          "id": "mp1edmo2ifbbwy4x1d9",
+          "name": "Цезий 312",
+          "dosage": "20г",
+          "time": "08.00",
+          "issued": true
+        }
+      ],
+      "id": "1778516046263"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "r1",
+      "name": "Палата 201",
+      "floor": "2",
+      "capacity": 4,
+      "description": "",
+      "createdAt": "2026-05-10T00:00:00.000Z"
+    },
+    {
+      "id": "r2",
+      "name": "Палата 115",
+      "floor": "1",
+      "capacity": 4,
+      "description": "",
+      "createdAt": "2026-05-10T00:00:00.000Z"
+    },
+    {
+      "id": "r3",
+      "name": "Палата 210",
+      "floor": "2",
+      "capacity": 3,
+      "description": "",
+      "createdAt": "2026-05-10T00:00:00.000Z"
+    },
+    {
+      "id": "r4",
+      "name": "Палата 104",
+      "floor": "1",
+      "capacity": 2,
+      "description": "",
+      "createdAt": "2026-05-10T00:00:00.000Z"
+    },
+    {
+      "id": "r-1778516046289",
+      "name": "114",
+      "floor": "",
+      "capacity": 4,
+      "description": "",
+      "createdAt": "2026-05-11T16:14:06.289Z"
+    }
+  ],
+  "users": [
+    {
+      "name": "Санжар",
+      "email": "sanjar@clinic.com",
+      "password": "123456",
+      "department": "Кардиология",
+      "phone": "1000000000",
+      "role": "doctor",
+      "id": "3"
+    },
+    {
+      "name": "Нурдин",
+      "email": "nurdin@clinic.com",
+      "password": "123456",
+      "department": "Неврология",
+      "phone": "1100000000",
+      "role": "doctor",
+      "id": "2"
+    },
+    {
+      "name": "Чика",
+      "email": "chyngyz@clinic.com",
+      "password": "123456",
+      "department": "Хирургическое отделение",
+      "phone": "1110000000",
+      "role": "doctor",
+      "id": "4"
+    },
+    {
+      "name": "Нуртилек",
+      "email": "nurtilek@clinic.com",
+      "password": "123456",
+      "department": "Травмпункт",
+      "phone": "1111000000",
+      "role": "doctor",
+      "id": "5"
+    },
+    {
+      "name": "Admin",
+      "email": "admin@clinic.com",
+      "password": "admin123",
+      "department": "management",
+      "phone": "0000000000",
+      "role": "admin",
+      "id": "1"
+    },
+    {
+      "name": "Nurdin Ryskulbekov",
+      "email": "nurdinsclone@gmail.com",
+      "password": "123456",
+      "department": "Кардиология",
+      "phone": "996771864720",
+      "role": "nurse",
+      "id": "1778434691778"
+    }
+  ]
+}
