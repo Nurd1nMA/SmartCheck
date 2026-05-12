@@ -10,8 +10,8 @@
     "preview": "vite preview",
     "server": "json-server --watch db.json --port 3001",
     "start": "concurrently \"npm run server\" \"npm run dev\"",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "predeploy": "echo skipped",
+    "deploy": "echo skipped"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.105.4",
