@@ -90,7 +90,7 @@ npm run dev
 
 | Роль | Email | Пароль |
 |---|---|---|
-| Admin | admin@clinic.com | admin123 |
+| Медсестра | nurdinsclone@gmail.com | 123456 |
 | Врач | doctor@clinic.uz | 123456 |
 
 ---
